@@ -1,0 +1,78 @@
+body, header, section, div, h1, h2, p {
+	margin:0;
+	padding:0;
+}
+
+body { 
+	font-family:'Consolas', 'helvetica', 'arial';
+	width:75%;
+	margin: 0 auto;
+}
+
+input[type="text"] {
+	font-family:'Consolas';
+	width:100%;
+}
+
+header {
+	text-align:center;
+}
+
+textarea {
+	width:100%;
+	resize:none;
+}
+
+.cf:before,
+.cf:after {
+	content:"";
+	display:table;
+}
+
+.cf:after {
+	clear:both;
+}
+
+.left {
+	float:left;
+}
+
+.blue {
+	background-color:rgba(0,0,255,0.2);
+}
+
+.red {
+	background-color:rgba(255,0,0,0.2);
+}
+
+@media (min-width: 1193px) {
+	div.input,
+	div.output {
+		width:44%;
+		padding:0 3%;
+	}
+}
+
+@media (max-width: 1192px) and (min-width:563px) {
+	div.input,
+	div.output {
+		width:94%;
+		padding:0 3%;
+	}
+}
+
+@media (max-width: 562px) {
+	h1 {
+		font-size:1.5em;
+	}
+
+	h2 {
+		font-size:1.0em;
+	}
+
+	div.input,
+	div.output {
+		width:98%;
+		padding:0 1%;
+	}
+}
