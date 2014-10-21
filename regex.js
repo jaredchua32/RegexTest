@@ -11,8 +11,9 @@ var RegexTest = {
 	init: function(config) {
 		this.regexBox = config.regexBox;
 		this.testBox = config.testBox;
-		this.resultsBox = config.resultsBox;
-		this.rawResultsBox = config.rawResultsBox; //
+
+		this.myRegexResult = config.myRegexResult;
+		this.rawRegexResult = config.rawRegexResult;
 
 		this.bindEvents();
 	},
@@ -46,23 +47,25 @@ var RegexTest = {
 			testString = this.testBox[0].value,
 			validationResults = this.validateRegex(regexString);
 		
-		// My results.
-		if(validationResults.isValid) {
-			var newRegex = new RegExp(regexString);
-			this.resultsBox[0].value = newRegex;		
-		} else {
-			this.resultsBox[0].value = validationResults.reason;
-		}
-		// End my results.
-
 		// Raw results.
 		try {
 			var newRegexTwo = new RegExp(regexString);
-			this.rawResultsBox[0].value = newRegexTwo;
+			this.rawRegexResult[0].value = newRegexTwo;
 		} catch(e) {
-			this.rawResultsBox[0].value = e.message;
+			this.rawRegexResult[0].value = e.message;
 		}
 		// End raw results.
+
+		// My results.
+		if(validationResults.isValid) {
+			var newRegex = new RegExp(regexString);
+			this.myRegexResult[0].value = newRegex;		
+		} else {
+			this.myRegexResult[0].value = validationResults.reason;
+		}
+		// End my results.
+
+		
 	},
 
 	validateRegex: function(userRegex) {
@@ -130,7 +133,7 @@ var RegexTest = {
 						isValid = false;
 						reason = "Unmatched '(' at index: " + lastParenIndex;
 					} else if(parensTotal === 0) {
-						regexIsValid = true;
+						isValid = true;
 					}
 				}
 			} /* End check parentheses. */
@@ -181,6 +184,8 @@ regexTest = function(config) {
 myRegexTest = regexTest({
 	regexBox: $("#regexBox"),
 	testBox: $("#testBox"),
+	myRegexResult: $("#myRegexResult"),
+	rawRegexResult: $("#rawRegexResult"),
 	resultsBox: $("#resultBox"),
 	rawResultsBox: $("#rawResultBox")
 });
