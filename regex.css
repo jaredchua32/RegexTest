@@ -21,6 +21,7 @@ header {
 textarea {
 	width:100%;
 	resize:none;
+	padding-bottom:2px;
 }
 
 .cf:before,
